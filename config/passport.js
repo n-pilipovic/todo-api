@@ -1,3 +1,5 @@
+"use strict";
+
 let _ = require('lodash');
 let passportJWT = require('passport-jwt');
 

@@ -1,3 +1,5 @@
+"use strict";
+
 let FlakeIdGen = require('flake-idgen');
 let intformat = require('biguint-format');
 let generator = new FlakeIdGen();

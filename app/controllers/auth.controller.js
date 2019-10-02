@@ -1,3 +1,5 @@
+"use strict";
+
 let  config = require('../../config/passport');
 let jwt = require('jsonwebtoken');
 let _ = require('lodash');
