@@ -4,6 +4,7 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let passport = require('passport');
 let morgan = require('morgan');
+let helmet = require('helmet');
 let router = require('./app/router');
 
 let config = require('./config/passport');
@@ -17,6 +18,9 @@ app.use(bodyParser.json());
 
 // register logging
 app.use(morgan('dev'));
+
+// security config
+app.use(helmet());
 
 // CORS
 app.use(function (req, res, next) {
