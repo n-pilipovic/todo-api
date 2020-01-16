@@ -15,6 +15,7 @@ let apiRoutes = express.Router();
 
 apiRoutes.post('/login', authController.auth);
 apiRoutes.post('/signup', authController.signup);
+apiRoutes.post('/validate', authController.validate);
 
 // todos routes
 apiRoutes.get('/todos', passport.authenticate('jwt', { session: false }), todoController.getAll);

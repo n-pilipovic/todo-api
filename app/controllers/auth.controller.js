@@ -6,7 +6,8 @@ let _ = require('lodash');
 
 const authController = {
   signup: signup,
-  auth: auth
+  auth: auth,
+  validate: validate
 };
 
 
@@ -44,7 +45,7 @@ function auth(req, res) {
     }
 
     if(user.password === req.body.password) {
-      // from now on we'll identify the user by the id and ttodoshe id is the only personalized value that goes into our token
+      // from now on we'll identify the user by the id and it is the only personalized value that goes into our token
       const payload = {id: user.id};
       const token = jwt.sign(payload, config.jwtOptions.secretOrKey);
 
@@ -58,6 +59,20 @@ function auth(req, res) {
     }
 
   }
+}
+
+/**
+ * Method checks if user is already registered.
+ * It returns TRUE if user does not exists in system, FALSE in other way
+ * @param req - query param 'username' is required
+ * @param res - returns TRUE or FALSE
+ */
+function validate(req, res) {
+  const username = req.query.username;
+
+  const result = config.users.some(user => user.username === username);
+
+  res.status(200).json(!result);
 }
 
 module.exports = authController;
